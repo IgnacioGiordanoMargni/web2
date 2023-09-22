@@ -1,37 +1,157 @@
+/*codigo general de la pagina*/
 body{
-    background-color: rgb(43, 43, 43);
+    background-color: #201C35;
+    color: #988FC5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 2%;
 }
-h1{
-color: rgba(147, 74, 214, 0.737);    
+
+header{
+    border: solid 10px #988FC5;
+    background-color: #3A3260;
 }
-.botonera{
-    width: 100%;
-    height: 10%;
+/*codigo de la seccion de arriba del todo, el buscador, el logo y el slogan*/
+.logo{
     display: flex;
-    flex-direction: row;
-    background-color: rgb(139, 61, 158);
-   
-    border: solid 3px black;
-    }
-    .botonera>input{
-       
-        
-        justify-content: right;
-        margin-top: 1%;
-        margin-bottom: 1%;
-        width: 75%;
-        border-color: black;
-    }
-    .botonera>h1{
-        margin-right: 2%;
-        margin-left: 2%;
-    }
+    justify-items: center;
+    margin-right: 5px;
+    margin-top: 10px;
+}
 
-/*aca va la parte de celular*/
-@media only screen and (max-width:600px){
+.intro{
+    padding-top: 10px;
+}
+
+.slogan{
+    margin-left: 5px;
+}
+
+.intro-img{
+    height: 50px;
+    width: 50px;
+}
+
+.intro-txt{
+    font-size: medium;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+header{
+    border-radius: 15px;
+    padding: 10px; 
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bloque-buscador{
+    width: 90%;
+    border: solid 3px #201C35;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+/*codigo de las categorias y el navegador*/
+.menu {
+    background-color: #3A3260;
+    border: solid 10px #988FC5;
+    border-radius: 15px;
+    display: flex;
+    margin-top: 15px;
+}
+
+.btn_menu {
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    margin-top: 10px;
+}
+
+ul.navigation {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  
+ul.navigation.show {
+    display: flex;
+}
+
+.btn_menu a {
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+}
+ 
+.botonera {
+    text-align: center;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    color: #988FC5;
+}
+
+ul.navigation li {
+    list-style: none;
+    margin: 0px 0px;
+    padding: 15px 20px;
+}
+
+ul.navigation .botonera:hover {
+    background-color: #201C35;
+    border-radius: 5px;
+}
+
+/*codigo de la seccion de todos los objetos*/
+.titulo-cat{
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+    margin-top: 10px;    
+}
+
+.seccion-todo{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.producto{
+    border: solid 5px ;
+    padding: 20px;
+    text-align: center;
+    background-color: #3A3260;
+}
+.producto p{
+    font-size: large;
+}
+
+.imagen-prod{
+    width: 150px;
+    height: auto;
+    border: solid 5px #201C35;
+}
+/*codigo del final de la pagina*/
+
+.copyright{
+    margin-top: 20px;
+    text-align: center;
+    font-size: large;
+}
+
+@media screen and (min-width: 660px) {  /* modo computadoras*/
 
 }
-/*aca va la parte de la computadora*/
-@media only screen and (min_width:600px){
 
+@media screen and (max-width: 660px) {  /* modo celulares*/
+    
 }
