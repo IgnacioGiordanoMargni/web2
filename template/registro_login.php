@@ -8,7 +8,7 @@
     <button type="submit">Registrarse</button>
 </form>
 
-<form required action="entrar" method="POST" class="my-4">
+<form required action="logueo" method="POST" class="my-4">
     <label>"Mail"</label>
     <input name="Mail" type="text">
     <label>"Contraseña"</label>

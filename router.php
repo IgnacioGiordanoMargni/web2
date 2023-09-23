@@ -30,6 +30,9 @@ switch ($params[0]){
     case 'agregar_usuario':
         adduser();
         break;
+    case 'logueo':
+         verificar_log();
+         break;
     default:
     echo "404 Page Not Found";
     break;
