@@ -148,6 +148,23 @@ ul.navigation .botonera:hover {
     font-size: large;
 }
 
+/* Codigo de los Formularios de Inicio de sesion y Registro*/
+
+.form-box{
+    background-color: #3A3260;
+    border: solid 10px #988FC5;
+    border-radius: 15px;
+    margin: 25px;
+    padding-left: 10px;
+}
+
+form input{
+    margin-right: 15px;
+}
+
+form button{
+    border: solid 1px #201C35;
+}
 @media screen and (min-width: 660px) {  /* modo computadoras*/
 
 }
