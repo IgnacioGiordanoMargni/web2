@@ -10,6 +10,17 @@ header{
     border: solid 10px #988FC5;
     background-color: #3A3260;
 }
+a{
+text-decoration: none;
+color: aliceblue;
+
+margin:solid 10px black;
+padding: 2px;
+
+background-color: #988FC5;
+   
+   
+}
 
 /*codigo de la seccion de arriba del todo, el buscador, el logo y el slogan*/
 .logo{
@@ -149,10 +160,16 @@ ul.navigation .botonera:hover {
     font-size: large;
 }
 
+/*tablas de registro*/
 .form-box{
-    background-color: #2500df;
-    border: solid 10px #988FC5;
-    margin: 25px;
+    background-color: #3A3260;
+    border: solid 2px #988FC5;
+    padding-left: 25px;
+    border-radius: 20px;
+
+}
+.form-box>button{
+    border:solid 2px rgb(34, 2, 36);
 }
 
 @media screen and (min-width: 660px) {  /* modo computadoras*/

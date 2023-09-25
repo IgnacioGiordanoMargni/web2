@@ -20,7 +20,7 @@ switch ($params[0]){
         require_once 'template/botonera.php';
        ?> <p class="titulo-cat"><u>Todos los objetos</u></p> 
        <article class="seccion-todo">
-       <?php MostrarProducto2(); ?> 
+       <?php MostrarProducto(); ?> 
        </article>
        
         <a href="verificar_usuario">Agregar Productos</a> <?php
@@ -28,7 +28,7 @@ switch ($params[0]){
         require_once 'template/footer.php';
         break;
     case 'entrar':
-          //tengo que averiguar como filtrar a los id o mails repetidos
+         
          require_once 'template/registro_login.php';
          
          break;
@@ -41,11 +41,26 @@ switch ($params[0]){
     case 'verificar_usuario':
         require_once 'template/verificar_usuario.php';
          break;
-    case 'añadir_producto':
-         verificar_permisos();
+     case 'verificar_usuario2':
+          verificar_permisos();
+         break;
+    case 'añadiroquitar_producto':
+        
+         require_once 'template/registro_producto.php';
+         require_once 'template/form_quitar.php';
+         ?><h1>Lista de productos</h1>
+         <article class="seccion-todo">
+         <?php
+         MostrarProducto();
+         ?>
+         </article>
+         <a href='home'>Ir al sitio principal</a><?php
          break;
     case 'insertar_producto':
          AñadirProducto();
+         break;
+    case 'quitar_producto':
+         QuitarProducto();
          break;
     default:
     echo "404 Page Not Found";

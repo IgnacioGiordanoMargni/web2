@@ -2,19 +2,17 @@
 require_once 'app/db.php';
 
 
+/* esta de esta manera porque es un codigo que sirve para hacer ciertas pruebas y puede servir a futuro
 function MostrarUsuarios() {
 
     $Users = ObtenerUsuarios();
 
-    
-  
      foreach($Users as $User){ 
       
           echo "<li>". $User->Nombre . "</li>"; 
           
-    
     }
-}
+}*/
 
 function adduser(){
     $mail= $_POST['Mail'];

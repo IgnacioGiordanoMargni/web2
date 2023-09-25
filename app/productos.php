@@ -18,7 +18,7 @@ function AñadirProducto(){
     
     if($id!=null){
       //redirijo al usuario a la pantalla principal
-      header('Location: home');
+      header('Location: añadiroquitar_producto');
     } else{
         echo "error al insertar el producto!";
     }
@@ -45,26 +45,6 @@ function MostrarProducto(){
 }
 
 
-   function MostrarProducto2(){
-    $Productos = ObtenerProductos();
-
-    
-  
-    foreach($Productos as $Producto){ 
-     
-         echo  '<article class="seccion-todo">
-                  <div class="producto">
-                     <img class="imagen-prod" src='. $Producto->Imagen . '>
-                       <h1>'. $Producto->Producto .'</h1>
-                        <p><b>Precio</b></p>
-                        <p>'. $Producto->Precio .'</p
-                        </div>
-                        </article>';
-       
-   }
-
-}
-
 function verificar_permisos(){
     $db=conectar_tpo_db();
     $mail=$_POST['Mail'];
@@ -76,7 +56,7 @@ function verificar_permisos(){
   
   if(password_verify($password, $resultados['Contraseña'])){
     if($resultados['Permisos']==1){
-            require_once 'template/registro_producto.php';
+      header('Location: añadiroquitar_producto');
 
         }else{
             echo "no estan los permisos adecuados";
@@ -86,4 +66,14 @@ function verificar_permisos(){
     echo "las credenciales no coinciden";
   }
 }
+function QuitarProducto(){
+  $producto=$_POST['Producto'];
+  $db=conectar_tpo_db();
+  $sentencia = $db->prepare("DELETE FROM productos WHERE Producto=:Producto");
+  $sentencia->bindParam(':Producto', $_POST['Producto']);
+  $sentencia->execute();
+  header('Location: añadiroquitar_producto');
+  
+}
+
 
