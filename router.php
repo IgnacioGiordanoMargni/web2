@@ -18,8 +18,13 @@ $params = explode('/', $action);
 switch ($params[0]){
     case 'home':
         require_once 'template/botonera.php';
-       ?> <p class="titulo-cat"><u>Todos los objetos</u></p> <?php
-        MostrarProducto();
+       ?> <p class="titulo-cat"><u>Todos los objetos</u></p> 
+       <article class="seccion-todo">
+       <?php MostrarProducto2(); ?> 
+       </article>
+       
+        <a href="verificar_usuario">Agregar Productos</a> <?php
+        
         require_once 'template/footer.php';
         break;
     case 'entrar':
@@ -32,6 +37,15 @@ switch ($params[0]){
         break;
     case 'logueo':
          verificar_log();
+         break;
+    case 'verificar_usuario':
+        require_once 'template/verificar_usuario.php';
+         break;
+    case 'añadir_producto':
+         verificar_permisos();
+         break;
+    case 'insertar_producto':
+         AñadirProducto();
          break;
     default:
     echo "404 Page Not Found";

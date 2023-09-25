@@ -68,7 +68,7 @@ function adduser(){
             echo $mensaje;
         }
     }
-    echo $password;
+   
   
   
     }
