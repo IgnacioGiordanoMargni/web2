@@ -2,23 +2,24 @@
 require_once 'app/db.php';
 
 
-function AñadirProducto(){
+function AñadirProducto($Nombre){
     $Producto= $_POST['Producto'];
     $Imagen= $_POST['Imagen'];
-    $Precio= $_POST['Precio']; //Cifro los datos de la contraseña, para que no sea posible averiguarla con solo ver la db
-    
+    $Precio= $_POST['Precio'];
+  
 
     //chequeo que los campos tengan contenido
     if(!empty($_POST['Producto'])&&!empty($_POST['Imagen'])&&!empty($_POST['Precio'])){
         
         //paso los datos a la funcion
-        $id= insertarDatos_Productos($Producto, $Imagen, $Precio);
+        $id=insertarDatos_Productos($Producto, $Imagen, $Precio);
+        insertar_Productos_Nombres($Producto, $Nombre);
     }
 
     
     if($id!=null){
       //redirijo al usuario a la pantalla principal
-      header('Location: añadiroquitar_producto');
+      header('Location: verificar_usuario');
     } else{
         echo "error al insertar el producto!";
     }
@@ -45,18 +46,19 @@ function MostrarProducto(){
 }
 
 
-function verificar_permisos(){
+function verificar_permisos_agregar(){
     $db=conectar_tpo_db();
     $mail=$_POST['Mail'];
     $password=$_POST['Contraseña'];
-    $registro = $db->prepare('SELECT Contraseña, Permisos FROM usuarios WHERE Mail = :Mail');
+    $registro = $db->prepare('SELECT Nombre, Contraseña, Permisos FROM usuarios WHERE Mail = :Mail');
     $registro->bindParam(':Mail', $_POST['Mail']);
     $registro->execute();
     $resultados = $registro->fetch(PDO::FETCH_ASSOC);
+    $Nombre=$resultados['Nombre'];
   
   if(password_verify($password, $resultados['Contraseña'])){
     if($resultados['Permisos']==1){
-      header('Location: añadiroquitar_producto');
+      AñadirProducto($Nombre);
 
         }else{
             echo "no estan los permisos adecuados";
@@ -66,6 +68,30 @@ function verificar_permisos(){
     echo "las credenciales no coinciden";
   }
 }
+
+function verificar_permisos_quitar(){
+  $db=conectar_tpo_db();
+  $mail=$_POST['Mail'];
+  $password=$_POST['Contraseña'];
+  $registro = $db->prepare('SELECT Nombre, Contraseña, Permisos FROM usuarios WHERE Mail = :Mail');
+  $registro->bindParam(':Mail', $_POST['Mail']);
+  $registro->execute();
+  $Nombre=$registro['Nombre'];
+  $resultados = $registro->fetch(PDO::FETCH_ASSOC);
+
+if(password_verify($password, $resultados['Contraseña'])){
+  if($resultados['Permisos']==1){
+    QuitarProducto();
+      }else{
+          echo "no estan los permisos adecuados";
+      }
+      
+}else{
+  echo "las credenciales no coinciden";
+}
+}
+
+
 function QuitarProducto(){
   $producto=$_POST['Producto'];
   $db=conectar_tpo_db();

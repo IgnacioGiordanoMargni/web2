@@ -16,7 +16,6 @@ function conectar_tpo_db(){
    return $db;
 }
 
-
 function insertarDatos($mail, $nombre, $contraseña){
 $db= conectar_tpo_db();
 $query=$db->prepare('INSERT INTO usuarios(Mail, Nombre, Contraseña) VALUES(?, ?, ?) ');
@@ -34,6 +33,16 @@ $query->execute([$producto, $imagen, $precio]);
 
 return $db->lastInsertId();
 }
+
+function insertar_Productos_Nombres($producto, $nombre){
+    $db= conectar_tpo_db();
+    
+    
+    $query=$db->prepare('INSERT INTO producto_usuario(Producto, nombre) VALUES(?, ?)');
+    $query->execute([$producto, $nombre]);
+    
+    return $db->lastInsertId();
+    }
 
 function ObtenerProductos(){
   

@@ -160,16 +160,31 @@ ul.navigation .botonera:hover {
     font-size: large;
 }
 
-/*tablas de registro*/
 .form-box{
     background-color: #3A3260;
     border: solid 2px #988FC5;
     padding-left: 25px;
     border-radius: 20px;
-
+    margin-bottom: 15px;
 }
 .form-box>button{
     border:solid 2px rgb(34, 2, 36);
+}
+
+form{
+    padding: 5px;
+}
+
+.boton_form{
+    text-decoration: none;
+    color: aliceblue;
+    padding: 2px;
+    background-color: #988FC5;
+    padding: 3px;
+}
+
+.al_menu{
+    margin: 1px;
 }
 
 @media screen and (min-width: 660px) {  /* modo computadoras*/

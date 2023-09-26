@@ -23,7 +23,7 @@ switch ($params[0]){
        <?php MostrarProducto(); ?> 
        </article>
        
-        <a href="verificar_usuario">Agregar Productos</a> <?php
+        <a href="añadiroquitar_producto">Agregar Productos</a> <?php
         
         require_once 'template/footer.php';
         break;
@@ -39,7 +39,7 @@ switch ($params[0]){
          verificar_log();
          break;
     case 'verificar_usuario':
-        require_once 'template/verificar_usuario.php';
+        require_once 'template/registro_producto';
          break;
      case 'verificar_usuario2':
           verificar_permisos();
@@ -57,10 +57,10 @@ switch ($params[0]){
          <a href='home'>Ir al sitio principal</a><?php
          break;
     case 'insertar_producto':
-         AñadirProducto();
+         verificar_permisos_agregar();
          break;
     case 'quitar_producto':
-         QuitarProducto();
+         verificar_permisos_quitar();
          break;
     default:
     echo "404 Page Not Found";
