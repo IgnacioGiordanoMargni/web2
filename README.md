@@ -1,5 +1,12 @@
 # web2
 tp de web 2
-Los integrantes del grupo somos Ignacio Giordano Margni y Matias Ezquiel Morcillo, la tematica del tp es un catalogo de 
-un mercado de fantasía, donde los usuarios pueden entrar, registrarse y también añadir o quitar productos si tienen los permisos 
-correspondientes.
+nombres de los integrantes del grupo (emails): 
+    -Matias Morcillo - matiasmorcillo128@gmail.com
+    -Ignacio Giordano Margni - icasas760@gmail.com
+Temática del TPE: 
+    -Mercado de productos fantasticos
+Breve descripción de la temática:
+    -En resumen, la pagina es una version parecida a MercadoLibre pero que se basa en vender productos de fantasia de distintas franquicias, 
+    donde los usuarios pueden entrar, registrarse y también añadir o quitar productos si tienen los permisos correspondientes
+Diagrama de entidad relación (DER):
+    _Se encuentra en el github.
