@@ -2,8 +2,10 @@
 
 <?php
 
-require_once 'app/usuarios.php';
-require_once 'app/productos.php';
+
+
+require_once 'app/controller/controlador_producto.php';
+require_once 'app/controller/controlador_usuarios.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']). '/');
 
@@ -20,7 +22,12 @@ switch ($params[0]){
         require_once 'template/botonera.php';
        ?> <p class="titulo-cat"><u>Todos los objetos</u></p> 
        <article class="seccion-todo">
-       <?php MostrarProducto(); ?> 
+       <?php 
+        
+        $controller = new controlador_producto(); 
+        $controller->mostrar_productos();
+
+        ?> 
        </article>
        
         <a href="añadiroquitar_producto">Agregar Productos</a> <?php
@@ -33,13 +40,15 @@ switch ($params[0]){
          
          break;
     case 'agregar_usuario':
-        adduser();
+     $controller = new controlador_usuarios(); 
+     $controller->adduser();
         break;
     case 'logueo':
-         verificar_log();
+     $controller = new controlador_usuarios(); 
+     $controller->verificar_log();
          break;
     case 'verificar_usuario':
-        require_once 'template/registro_producto';
+         require_once 'template/registro_producto.php';
          break;
      case 'verificar_usuario2':
           verificar_permisos();
@@ -51,16 +60,20 @@ switch ($params[0]){
          ?><h1>Lista de productos</h1>
          <article class="seccion-todo">
          <?php
-         MostrarProducto();
+         $controller = new controlador_producto(); 
+         $controller->mostrar_productos();
+ 
          ?>
          </article>
          <a href='home'>Ir al sitio principal</a><?php
          break;
     case 'insertar_producto':
-         verificar_permisos_agregar();
+     $controller = new controlador_producto();
+     $controller->verificar_permisos_agregar();
          break;
     case 'quitar_producto':
-         verificar_permisos_quitar();
+     $controller = new controlador_producto();
+     $controller->verificar_permisos_quitar();
          break;
     default:
     echo "404 Page Not Found";
