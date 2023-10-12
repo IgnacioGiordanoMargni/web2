@@ -5,8 +5,12 @@
     <input name="Producto" type="text">
     <label>Link de la imagen</label>
     <input name="Imagen" type="text">
+    <label>Descripcion</label>
+    <input name="Descripcion" type="text"></input>
     <label>Precio</label>
     <input name="Precio" type="text"></input>
+    <label>Categoria</label>
+    <input name="Categoria" type="text"></input>
     <p>Verificar credenciales</p>
     <input name="Mail" type="text">
     <label>Mail</label>

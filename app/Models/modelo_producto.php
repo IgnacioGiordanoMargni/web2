@@ -34,7 +34,6 @@ class modelo_producto{
             
             $query=$db->prepare('INSERT INTO producto_usuario(Producto, nombre) VALUES(?, ?)');
             $query->execute([$producto, $nombre]);
-            
             return $db->lastInsertId();
             }
    

@@ -10,8 +10,8 @@
         </div>
         <input class="bloque-buscador" type="search" name="buscador" placeholder="Search">
         <div class="slogan">
-            <p class="intro-txt">"objetos fantasticos,</p>
-            <p class="intro-txt">y fantasticos precios"</p>
+            <p class="intro-txt">"objetos fantasticos, y fantasticos precios"</p>
+            <a href="entrar" class="sesion">Iniciar Sesion/Registrarse</a>
         </div>
     </header>
     <nav class="btn_menu"><a><b> Categorias</b></a></nav>

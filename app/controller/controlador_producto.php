@@ -1,5 +1,5 @@
 <?php
-require_once "./app/models/modelo_producto.php";
+require_once "./app/Models/modelo_producto.php";
 require_once "./app/view/vista_productos.php";
 
 class controlador_producto{

@@ -30,8 +30,13 @@ switch ($params[0]){
         ?> 
        </article>
        
-        <a href="añadiroquitar_producto">Agregar Productos</a> <?php
-        
+        <a href="añadiroquitar_producto">Modificar Productos (admin)</a>
+        <a href="descripcion">test descripcion</a> <?php
+        require_once 'template/footer.php';
+        break;
+    case 'descripcion':
+        require_once 'template/descripcion_producto.php'
+        ?> <a href="home">volver</a> <?php
         require_once 'template/footer.php';
         break;
     case 'entrar':
@@ -54,7 +59,6 @@ switch ($params[0]){
           verificar_permisos();
          break;
     case 'añadiroquitar_producto':
-        
          require_once 'template/registro_producto.php';
          require_once 'template/form_quitar.php';
          ?><h1>Lista de productos</h1>
