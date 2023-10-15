@@ -36,8 +36,6 @@ background-color: #988FC5;
 
 .slogan{
     margin-left: 5px;
-    display: grid;
-    align-items: center;
 }
 
 .intro-img{
@@ -64,11 +62,6 @@ header{
     border: solid 3px #201C35;
     border-radius: 5px;
     padding-left: 15px;
-}
-
-.sesion{
-    margin-top: 3px;
-    text-align: center;
 }
 
 /*codigo de las categorias y el navegador*/
@@ -178,23 +171,6 @@ ul.navigation .botonera:hover {
 .form-box>button{
     border:solid 2px rgb(34, 2, 36);
 }
-
-/*pruebas visuales de descripcion de producto*/
-.des-producto{
-    border: solid 10px #988FC5;
-    padding: 3px;
-    background-color: #3A3260;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.des-img {
-    border: solid 5px #201C35;
-    margin: 10px;
-}
-
 
 @media screen and (min-width: 660px) {  /* modo computadoras*/
 

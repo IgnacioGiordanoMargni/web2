@@ -1,0 +1,9 @@
+<?php
+foreach($Productos as $Producto): ?>
+<div class="producto">
+<img class="imagen-prod"  src='<?= $Producto->Imagen ?>' >
+<h1><a href='descripcion/'> <?= $Producto->Producto ?> </a></h1>
+<p><b>Precio</b></p>
+<p><?= $Producto->Precio ?> $ </p>
+</div>
+<?php endforeach ?>                  

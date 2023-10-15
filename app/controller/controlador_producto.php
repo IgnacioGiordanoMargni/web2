@@ -40,7 +40,7 @@ function AñadirProducto($Nombre){
     
 }
 
-function QuitarProducto(){
+function QuitarProducto(){ //mejorar, ver filmina
     $producto=$_POST['Producto'];
     $db=$this->conectar_tpo_db();
     $sentencia = $db->prepare("DELETE FROM productos WHERE Producto=:Producto");
@@ -100,5 +100,7 @@ if(password_verify($password, $resultados['Contraseña'])){
   echo "las credenciales no coinciden";
 }
 }
-
+function Mostrar_Producto_Descripcion(){
+  $this->view->MostrarProductoDescripcion();
+}
 }

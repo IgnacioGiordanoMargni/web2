@@ -35,26 +35,22 @@ class controlador_usuarios {
      }
 
      function verificar_log(){
-        session_start();
-        $db= $this->model->conectar_tpo_db();
+       
+       
         $mail= $_POST['Mail'];
-    
-        if (!empty($_POST['Mail']) && !empty($_POST['Contraseña'])) {
-          $mail = $_POST['Mail'];
-          $password = $_POST['Contraseña'];
-          $registros = $db->prepare('SELECT Mail, Contraseña FROM usuarios WHERE Mail = :Mail');
-          $registros->bindParam(':Mail', $_POST['Mail']);
-          $registros->execute();
-          $resultados = $registros->fetch(PDO::FETCH_ASSOC);
-        
-          $mensaje = '';
+        $password = $_POST['Contraseña'];
+        $resultados=$this->model->ObtenerUsuarioPorMail($mail, $password);
+
+        $mensaje = '';
       
-          if ($resultados && !empty($_POST['Contraseña'])) {
+          if (!empty($resultados)) {
                 // Verificar la contraseña
                 if (password_verify($password, $resultados['Contraseña'])) {
-                    $_SESSION['user_id'] = $mail;
+                    session_start();
+                    $_SESSION['user_mail'] = $resultados['Mail'];
+                    $_SESSION['user_permisos']=$resultados['Permisos'];
                     header('Location:home');
-                    exit(); // Importante: asegúrate de salir para evitar que el código siga ejecutándose
+                  
                 } else {
                     $mensaje = 'Las credenciales no coinciden';
                     echo $mensaje;
@@ -62,10 +58,14 @@ class controlador_usuarios {
             } else {
                 $mensaje = 'Usuario no encontrado'; // El usuario no existe en la base de datos
                 echo $mensaje;
+                die();
             }
         }
-            
+        
+        function logout(){
+         session_destroy();
+         header('Location: home');
         }
-
+  
         
 }

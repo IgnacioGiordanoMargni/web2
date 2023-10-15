@@ -26,8 +26,14 @@ class modelo_usuarios {
         return $user;
      }     
 
-    
-     
-
-
+     function ObtenerUsuarioPorMail($mail, $password){
+        $db= $this->conectar_tpo_db();
+        if (!empty($mail) && !empty($password)) {
+            $registros = $db->prepare('SELECT Mail, Contraseña, Permisos FROM usuarios WHERE Mail = :Mail');
+            $registros->bindParam(':Mail', $mail);
+            $registros->execute();
+            $resultados = $registros->fetch(PDO::FETCH_ASSOC);
+            return $resultados;
+     } 
+}
 }

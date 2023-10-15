@@ -9,76 +9,75 @@ require_once 'app/controller/controlador_usuarios.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']). '/');
 
-$action= 'entrar'; 
+$action= 'home'; 
 
 if(!empty ( $_GET['action'])){
     $action = $_GET['action'];
 }
 
-$params = explode('/', $action);
+$params = explode('/', $action);//mejorar ruteo
 
+$controller_user = new controlador_usuarios(); 
+$controller_producto = new controlador_producto(); 
+session_start();
 switch ($params[0]){
     case 'home':
-        require_once 'template/botonera.php';
+        require_once 'template/botonera.phtml';
        ?> <p class="titulo-cat"><u>Todos los objetos</u></p> 
-       <article class="seccion-todo">
-       <?php 
-        
+       <article class="seccion-todo"><?php 
         $controller = new controlador_producto(); 
         $controller->mostrar_productos();
-
         ?> 
        </article>
-       
-        <a href="añadiroquitar_producto">Modificar Productos (admin)</a>
-        <a href="descripcion">test descripcion</a> <?php
-        require_once 'template/footer.php';
-        break;
-    case 'descripcion':
-        require_once 'template/descripcion_producto.php'
-        ?> <a href="home">volver</a> <?php
-        require_once 'template/footer.php';
+        <a href="añadiroquitar_producto">Agregar Productos</a> <?php
+        require_once 'template/footer.phtml';
         break;
     case 'entrar':
          
-         require_once 'template/registro_login.php';
+         require_once 'template/registro_login.phtml';
          
          break;
     case 'agregar_usuario':
-     $controller = new controlador_usuarios(); 
-     $controller->adduser();
+  
+     $controller_user->adduser();
         break;
     case 'logueo':
-     $controller = new controlador_usuarios(); 
-     $controller->verificar_log();
+     $controller_user->verificar_log();
          break;
     case 'verificar_usuario':
-         require_once 'template/registro_producto.php';
+         require_once 'template/registro_producto.phtml';
          break;
      case 'verificar_usuario2':
           verificar_permisos();
          break;
     case 'añadiroquitar_producto':
-         require_once 'template/registro_producto.php';
-         require_once 'template/form_quitar.php';
+        
+         require_once 'template/registro_producto.phtml';
+         require_once 'template/form_quitar.phtml';
          ?><h1>Lista de productos</h1>
          <article class="seccion-todo">
          <?php
-         $controller = new controlador_producto(); 
-         $controller->mostrar_productos();
+        
+         $controller_producto->mostrar_productos();
  
          ?>
          </article>
          <a href='home'>Ir al sitio principal</a><?php
          break;
     case 'insertar_producto':
-     $controller = new controlador_producto();
-     $controller->verificar_permisos_agregar();
+     $controller_producto->verificar_permisos_agregar();
          break;
     case 'quitar_producto':
-     $controller = new controlador_producto();
-     $controller->verificar_permisos_quitar();
+        $controller_producto->verificar_permisos_quitar();
          break;
+    case 'logout':
+        $controller_user->logout();
+         break;
+
+    case 'descripcion':   
+     $producto = $params[1];
+     $controller_producto->Mostrar_Productos_Descripcion();
+         break;         
     default:
     echo "404 Page Not Found";
     break;
