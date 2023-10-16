@@ -1,13 +1,14 @@
-
 <article class="seccion-todo">
 <?php
 foreach($Productos as $Producto): ?>
 
 <div class="producto">
 <img class="imagen-prod"  src='<?= $Producto->Imagen ?>' >
-<h1><a href='descripcion/<?=$Producto->id ?>'> <?= $Producto->Producto ?> </a></h1>
+<h1> <?= $Producto->Producto ?> </h1>
 <p><b>Precio</b></p>
-<p><?= $Producto->Precio ?> $ </p>
+<p><?= $Producto->Precio ?>$</p>
+<a href='quitar_producto/<?=$Producto->id?>'>Suprimir</a>
+
 </div>
 
 <?php endforeach ?>                  

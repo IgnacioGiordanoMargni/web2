@@ -40,22 +40,13 @@ function AñadirProducto($Nombre){
     
 }
 
-function QuitarProducto(){ //mejorar, ver filmina
-    $producto=$_POST['Producto'];
-    $db=$this->conectar_tpo_db();
-    $sentencia = $db->prepare("DELETE FROM productos WHERE Producto=:Producto");
-    $sentencia->bindParam(':Producto', $_POST['Producto']);
-    $sentencia->execute();
-    header('Location: añadiroquitar_producto');
-    
-  }
+
 
 function mostrar_productos(){
     $Productos= $this->model->ObtenerProductos();
-
     $this->view->MostrarProducto($Productos);
-
 }
+
 function verificar_permisos_agregar(){
     $db=$this->conectar_tpo_db();
     $mail=$_POST['Mail'];
@@ -79,28 +70,47 @@ function verificar_permisos_agregar(){
   }
 }
 
-function verificar_permisos_quitar(){
+function verificar_permisos_quitar($id){
   $db=$this->conectar_tpo_db();
-  $mail=$_POST['Mail'];
-  $password=$_POST['Contraseña'];
-  $registro = $db->prepare('SELECT Nombre, Contraseña, Permisos FROM usuarios WHERE Mail = :Mail');
-  $registro->bindParam(':Mail', $_POST['Mail']);
-  $registro->execute();
-  $resultados = $registro->fetch(PDO::FETCH_ASSOC);
-  $Nombre=$resultados['Nombre'];
 
-if(password_verify($password, $resultados['Contraseña'])){
-  if($resultados['Permisos']==1){
-    $this->QuitarProducto();
+  
+
+if(isset($_SESSION['user_permisos'])){
+  if($_SESSION['user_permisos']==1){
+    $this->model->QuitarProducto($id);
+
       }else{
           echo "no estan los permisos adecuados";
       }
-      
-}else{
-  echo "las credenciales no coinciden";
+}else {
+  echo "No existen las credenciales";
 }
+
 }
-function Mostrar_Producto_Descripcion(){
-  $this->view->MostrarProductoDescripcion();
+
+
+function Mostrar_Producto_Descripcion($id){
+  $Producto= $this->model->obtenerProductoId($id);
+ 
+  $this->view->MostrarProductoDescripcion($Producto);
 }
+
+function Mostrar_Producto_Quitar(){
+
+  $Productos= $this->model->ObtenerProductos();
+  
+  $this->view->MostrarProductoQuitar($Productos);
+ 
+}
+
+function MostrarBotonera(){
+  $categorias= $this->model->ObtenerCategorias();
+  $this->view->botonera($categorias);
+}
+
+function MostrarCategoria($categoria){
+  $Productos= $this->model->ObtenerProductosCategoria($categoria);
+  $this->view->MostrarProducto($Productos);
+}
+
 }

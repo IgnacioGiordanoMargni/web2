@@ -1,17 +1,11 @@
 <?php
+require_once "model.php";
 
-class modelo_producto{
+class modelo_producto extends Model{
 
-
-    private function conectar_tpo_db(){
-        $db = new PDO('mysql:host=localhost;dbname=tpo_web2;charset=utf8','root', '');
-        return $db;
-     }
-     
     function ObtenerProductos(){
   
-        $db=$this->conectar_tpo_db(); 
-            $query = $db->prepare('SELECT * FROM productos');
+            $query = $this->db->prepare('SELECT * FROM productos');
             $query -> execute();
             $producto = $query->fetchAll(PDO::FETCH_OBJ); 
          return $producto;
@@ -19,27 +13,62 @@ class modelo_producto{
 
 
     function insertarDatos_Productos($producto, $imagen, $precio){
-        $db= $this->conectar_tpo_db();
+    
         
         
-        $query=$db->prepare('INSERT INTO productos(Producto, Imagen, Precio) VALUES(?, ?, ?)');
+        $query=$this->db->prepare('INSERT INTO productos(Producto, Imagen, Precio) VALUES(?, ?, ?)');
         $query->execute([$producto, $imagen, $precio]);
         
         return $db->lastInsertId();
         }
 
     function insertar_Productos_Nombres($producto, $nombre){
-            $db= $this->conectar_tpo_db();
+           
             
             
-            $query=$db->prepare('INSERT INTO producto_usuario(Producto, nombre) VALUES(?, ?)');
+            $query=$this->db->prepare('INSERT INTO producto_usuario(Producto, nombre) VALUES(?, ?)');
             $query->execute([$producto, $nombre]);
             
             return $db->lastInsertId();
             }
-   
+
+    function obtenerProductoId($id){ 
+       
+        $sentencia = $this->db->prepare("SELECT * FROM productos WHERE id=?");
+        $sentencia->execute([$id]);
+        $producto = $sentencia->fetch(PDO::FETCH_OBJ); 
+         return $producto;
+    }
+
+
+    function QuitarProducto($id){ //mejorar, ver filmina
+
+        $sentencia = $this->db->prepare("DELETE FROM productos WHERE id=?");
+        $sentencia->execute([$id]);
+        header('Location: http://localhost/tpo_web2/añadiroquitar_producto');
+      }
+
+    function ObtenerCategorias(){
+      
+        $query = $this->db->prepare('SELECT * FROM categorias');
+        $query -> execute();
+        $categorias = $query->fetchAll(PDO::FETCH_OBJ); 
+     return $categorias;
+    }
+
 
    
-    
+    function ObtenerProductosCategoria($id){
+     
+        $query = $this->db->prepare('SELECT * FROM categorias WHERE id=?');
+        $query->execute([$id]);
+        $resultado = $query->fetch(PDO::FETCH_OBJ);
+        $categoria= $resultado->Categorias;
+
+        $sentencia = $this->db->prepare('SELECT * FROM productos WHERE Categoria=?');
+        $sentencia->execute([$categoria]);
+        $productos= $sentencia->fetchAll(PDO::FETCH_OBJ);
+     return $productos; 
+    }
 
 }

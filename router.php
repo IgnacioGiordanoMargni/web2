@@ -22,14 +22,10 @@ $controller_producto = new controlador_producto();
 session_start();
 switch ($params[0]){
     case 'home':
-        require_once 'template/botonera.phtml';
-       ?> <p class="titulo-cat"><u>Todos los objetos</u></p> 
-       <article class="seccion-todo"><?php 
-        $controller = new controlador_producto(); 
-        $controller->mostrar_productos();
-        ?> 
-       </article>
-        <a href="añadiroquitar_producto">Agregar Productos</a> <?php
+        $controller_producto->MostrarBotonera();
+        $controller_producto = new controlador_producto(); 
+        $controller_producto->mostrar_productos();
+        
         require_once 'template/footer.phtml';
         break;
     case 'entrar':
@@ -39,7 +35,7 @@ switch ($params[0]){
          break;
     case 'agregar_usuario':
   
-     $controller_user->adduser();
+        $controller_user->adduser();
         break;
     case 'logueo':
      $controller_user->verificar_log();
@@ -53,31 +49,33 @@ switch ($params[0]){
     case 'añadiroquitar_producto':
         
          require_once 'template/registro_producto.phtml';
-         require_once 'template/form_quitar.phtml';
-         ?><h1>Lista de productos</h1>
-         <article class="seccion-todo">
-         <?php
-        
-         $controller_producto->mostrar_productos();
- 
-         ?>
-         </article>
-         <a href='home'>Ir al sitio principal</a><?php
+         $controller_producto->Mostrar_Producto_Quitar();
+  
          break;
     case 'insertar_producto':
      $controller_producto->verificar_permisos_agregar();
          break;
     case 'quitar_producto':
-        $controller_producto->verificar_permisos_quitar();
+        $id = $params[1];
+        $controller_producto->verificar_permisos_quitar($id);
+        ?> <a href='añadiroquitar_product'>Volver</a><?php
          break;
     case 'logout':
         $controller_user->logout();
          break;
 
     case 'descripcion':   
-     $producto = $params[1];
-     $controller_producto->Mostrar_Productos_Descripcion();
-         break;         
+     $id = $params[1];
+     $controller_producto->Mostrar_Producto_Descripcion($id);
+    
+      break;        
+      
+    case 'categoria':   
+     $id= $params[1];
+     $controller_producto->MostrarBotonera();
+     $controller_producto->MostrarCategoria($id);
+       
+      break;  
     default:
     echo "404 Page Not Found";
     break;

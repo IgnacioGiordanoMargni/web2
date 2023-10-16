@@ -1,3 +1,12 @@
 <footer>
+<?php if(isset($_SESSION['user_permisos'])){
+    if($_SESSION['user_permisos']==1){ ?>
+        <a href="añadiroquitar_producto">Agregar Productos</a>
+    <?php } 
+}?>
+
         <div class="copyright">&#169; 2023 Mercado Mitico; By Ignacio Margni & Matias Morcillo</div>
+
+    
+        
     </footer>
