@@ -1,17 +1,35 @@
 <h1>Registrar un producto</h1>
 <div class="form-box">
 <form required action="insertar_producto" method="POST" class="my-4">
-    <label>Producto</label>
+    <label>Producto: </label>
     <input name="Producto" type="text">
-    <label>Link de la imagen</label>
+    <label>Link de la imagen: </label>
     <input name="Imagen" type="text">
-    <label>Precio</label>
+    <label>Precio: </label>
     <input name="Precio" type="text"></input>
+    <select name="Categoria">
+            <?php
+            $sql = "SELECT Categorias FROM categoria";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['Categorias'] . "'>" . $row['Categorias'] . "</option>";
+                }
+            }
+            $conn->close();
+            ?>
+        </select>
+    <input name="Categoria" type="text"></input>
+    <label>Descripcion (menos de 255 caracteres): </label>
+    <input name="Descripcion" type="text"></input>
     <button type="submit">Guardar</button>
+    
 </form>
 <form>
     <label>Categorias</label>
     <input name="categorias">
     <button type="submit">Guardar</button>
 </form>
+<a href="home">Volver al Menu</a>
 </div>
