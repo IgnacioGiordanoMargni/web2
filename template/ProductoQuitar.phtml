@@ -1,0 +1,16 @@
+<article class="seccion-todo">
+<?php
+foreach($Productos as $Producto): ?>
+
+<div class="producto">
+<img class="imagen-prod"  src='<?= $Producto->Imagen ?>' >
+<h1> <?= $Producto->Producto ?> </h1>
+<p><b>Precio</b></p>
+<p><?= $Producto->Precio ?>$</p>
+<a href='quitar_producto/<?=$Producto->id?>'>Suprimir</a>
+<a href='form_modificar/<?=$Producto->id?>'>Modificar</a>
+</div>
+
+<?php endforeach ?>                  
+</article>
+         
