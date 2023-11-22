@@ -1,6 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="<?= BASE_URL ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modificar Form</title>
+</head>
+<body>
 <h1>Registrar un producto</h1>
 <div class="form-box">
-<form action="/tpo_web2/modificar_producto/<?=$datos->id?>" method="POST" class="my-4">
+<form action="modificar_producto/<?=$datos->id?>" method="POST" class="my-4">
     <label>Producto</label>
     <input name="Producto" type="text" placeholder=<?=$datos->Producto?>>
     <label>Link de la imagen</label>
@@ -19,3 +29,4 @@
     <button type="submit">Guardar</button>
 </form>
 </div>
+        </body>

@@ -1,6 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="<?= BASE_URL ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form quitar</title>
+</head>
+<body>
 <h1>Suprimir un producto</h1>
 <div class="form-box">
-<form required action="/tpo_web2/quitar_producto" method="POST" class="my-4">
+<form required action="quitar_producto" method="POST" class="my-4">
     <label>Nombre del producto</label>
     <input name="Producto" type="text">
     <p>Verificar credenciales</p>
@@ -11,3 +21,4 @@
     <button type="submit">Quitar</button>
 </form>
 </div>
+ </body>

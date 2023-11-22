@@ -1,15 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="<?= BASE_URL ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Modificar Form</title>
+</head>
+<body>
 <article class="seccion-todo">
 <?php
 foreach($Productos as $Producto): ?>
 
 <div class="producto">
 <img class="imagen-prod"  src='<?= $Producto->Imagen ?>' >
-<h1><a href='http://localhost/tpo_web2/descripcion/<?=$Producto->id ?>'> <?= $Producto->Producto ?> </a></h1>
+<h1><a href="descripcion/<?=$Producto->id ?>"> <?= $Producto->Producto ?> </a></h1>
 <p><b>Precio</b></p>
 <p><?= $Producto->Precio ?> $ </p>
 </div>
 
 <?php endforeach ?>                  
 </article>
-         
+</body>

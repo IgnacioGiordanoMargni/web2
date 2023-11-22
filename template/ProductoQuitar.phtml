@@ -1,3 +1,14 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="<?= BASE_URL ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Footer</title>
+</head>
+<body>
 <article class="seccion-todo">
 <?php
 foreach($Productos as $Producto): ?>
@@ -7,10 +18,10 @@ foreach($Productos as $Producto): ?>
 <h1> <?= $Producto->Producto ?> </h1>
 <p><b>Precio</b></p>
 <p><?= $Producto->Precio ?>$</p>
-<a href='/tpo_web2/quitar_producto/<?=$Producto->id?>'>Suprimir</a>
-<a href='/tpo_web2/form_modificar/<?=$Producto->id?>'>Modificar</a>
+<a href='quitar_producto/<?=$Producto->id?>'>Suprimir</a>
+<a href='form_modificar/<?=$Producto->id?>'>Modificar</a>
 </div>
 
 <?php endforeach ?>                  
 </article>
-         
+</body>

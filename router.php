@@ -66,6 +66,7 @@ switch ($params[0]){
        
          break;        
     case 'logout':
+        
         $controller_user->logout();
          break;
 
