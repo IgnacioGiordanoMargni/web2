@@ -7,8 +7,8 @@ foreach($Productos as $Producto): ?>
 <h1> <?= $Producto->Producto ?> </h1>
 <p><b>Precio</b></p>
 <p><?= $Producto->Precio ?>$</p>
-<a href='quitar_producto/<?=$Producto->id?>'>Suprimir</a>
-<a href='form_modificar/<?=$Producto->id?>'>Modificar</a>
+<a href='/tpo_web2/quitar_producto/<?=$Producto->id?>'>Suprimir</a>
+<a href='/tpo_web2/form_modificar/<?=$Producto->id?>'>Modificar</a>
 </div>
 
 <?php endforeach ?>                  

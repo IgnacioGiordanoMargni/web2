@@ -1,12 +1,12 @@
 <h1>Registrar un producto</h1>
 <div class="form-box">
-<form required action="http://localhost/tpo_web2/modificar_producto//<?=$id?>" method="POST" class="my-4">
+<form action="/tpo_web2/modificar_producto/<?=$datos->id?>" method="POST" class="my-4">
     <label>Producto</label>
-    <input name="Producto" type="text">
+    <input name="Producto" type="text" placeholder=<?=$datos->Producto?>>
     <label>Link de la imagen</label>
-    <input name="Imagen" type="text">
+    <input name="Imagen" type="text" placeholder=<?=$datos->Imagen?>>
     <label>Precio</label>
-    <input name="Precio" type="text"></input>
+    <input name="Precio" type="text" placeholder=<?=$datos->Precio?>></input>
     <select name="Categoria">
         
         <?php foreach($categorias as $categoria){ ?>

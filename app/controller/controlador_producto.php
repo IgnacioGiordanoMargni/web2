@@ -126,7 +126,8 @@ $this->model->modificar_producto($Producto, $Imagen, $Precio, $Categoria, $id);
 
 function form_modificar($id){
   $categorias= $this->model->ObtenerCategorias();
-  $this->view->form_modificar($id, $categorias);
+  $datos=$this->model->ObtenerProductoId($id);
+  $this->view->form_modificar($datos, $categorias);
 }
 
 }

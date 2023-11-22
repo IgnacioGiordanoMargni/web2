@@ -42,7 +42,7 @@ class modelo_producto extends Model{
     }
 
 
-    function QuitarProducto($id){ //mejorar, ver filmina
+    function QuitarProducto($id){ 
 
         $sentencia = $this->db->prepare("DELETE FROM productos WHERE id=?");
         $sentencia->execute([$id]);

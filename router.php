@@ -25,8 +25,7 @@ session_start();
 switch ($params[0]){
     case 'home':
         $controller_producto->MostrarBotonera();
-        $controller_producto = new controlador_producto(); 
-        $controller_producto->mostrar_productos();
+        $controller_producto->mostrar_productos(); 
         
         require_once 'template/footer.phtml';
         break;
@@ -71,6 +70,7 @@ switch ($params[0]){
          break;
 
     case 'descripcion':   
+     $controller_producto->MostrarBotonera();
      $id = $params[1];
      $controller_producto->Mostrar_Producto_Descripcion($id);
     

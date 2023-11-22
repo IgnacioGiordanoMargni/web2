@@ -27,7 +27,7 @@ function botonera($categorias){
     require_once './template/botonera.phtml';
 }
 
-function form_modificar($id, $categorias){
+function form_modificar($datos, $categorias){
     require_once './template/form_modificar.phtml';
 }
 }

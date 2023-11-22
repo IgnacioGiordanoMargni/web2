@@ -1,6 +1,7 @@
 <?php
 require_once "./app/Models/modelo_usuarios.php";
 require_once "./app/view/vista_usuarios.php";
+require_once './app/helper/authhelper.php';
 
 class controlador_usuarios {
 
@@ -8,6 +9,7 @@ class controlador_usuarios {
     private $view;
 
     function __construct(){
+        $this->helper = new AuthHelper();
         $this->model= new modelo_usuarios(); 
         $this->view= new vista_usuarios();
     }

@@ -14,17 +14,18 @@
             <p class="intro-txt">"objetos fantasticos"</p>
           <?php 
            if(isset($_SESSION['user_mail'])){
-            ?><a href='logout'> logout </a><?php
-          }else {
-            ?><a href='entrar'>Login o Registrarse</a><?php
-          } ?>
+            ?><a href='/tpo_web2/logout'> logout </a> <?php
+           }else {
+            ?><a href='/tpo_web2/entrar'>Login o Registrarse</a><?php
+           } 
+          ?>
         </div>
     </header>
     <nav class="btn_menu"><a><b> Categorias</b></a></nav>
     <nav class="menu">
         <ul class="navigation">
         <?php foreach($categorias as $categoria){ ?>
-       <li class="botonera"><a href="categoria/<?=$categoria->id?>"><?= $categoria->Categorias ?></a></li>  <?php
+       <li class="botonera"><a href="http://localhost/tpo_web2/categoria/<?=$categoria->id?>"><?= $categoria->Categorias ?></a></li>  <?php
      } ?>
      <li class="botonera"><a href="home">Todas</a></li>
         </ul>
