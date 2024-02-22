@@ -6,6 +6,7 @@
 
 require_once 'app/controller/controlador_producto.php';
 require_once 'app/controller/controlador_usuarios.php';
+require_once 'app/controller/controlador_pagina.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']). '/');
 
@@ -19,6 +20,7 @@ $params = explode('/', $action);//mejorar ruteo
 
 $controller_user = new controlador_usuarios(); 
 $controller_producto = new controlador_producto(); 
+$controller_pagina = new controlador_pagina(); 
 session_start();
 
 
@@ -26,12 +28,12 @@ switch ($params[0]){
     case 'home':
         $controller_producto->MostrarBotonera();
         $controller_producto->mostrar_productos(); 
-        
-        require_once 'template/footer.phtml';
+        $controller_pagina->showFooter();
+       
         break;
     case 'entrar':
          
-         require_once 'template/registro_login.phtml';
+      $controller_user->showLogin();
          
          break;
     case 'agregar_usuario':
@@ -41,12 +43,9 @@ switch ($params[0]){
     case 'logueo':
      $controller_user->verificar_log();
          break;
-    case 'verificar_usuario':
-         require_once 'template/registro_producto.phtml';
-         break;
     case 'añadiroquitar_producto':
         $controller_producto->permisos_modificar();
-        ?> <a href='home'>Volver</a><?php
+        $controller_pagina->botonVolver();
          break;
     case 'insertar_producto':
      $controller_producto->AñadirProducto();
@@ -54,7 +53,7 @@ switch ($params[0]){
     case 'quitar_producto':
         $id = $params[1];
         $controller_producto->verificar_permisos_quitar($id);
-        ?> <a href='añadiroquitar_product'>Volver</a><?php
+        $controller_pagina->botonVolver();
         break;
     case 'form_modificar':
         $id = $params[1];
@@ -85,7 +84,8 @@ switch ($params[0]){
      $id= $params[1];
      $controller_producto->MostrarBotonera();
      $controller_producto->MostrarCategoria($id);
-     require_once 'template/footer.phtml';
+     $controller_pagina->showFooter();
+
       break;  
     default:
     echo "404 Page Not Found";

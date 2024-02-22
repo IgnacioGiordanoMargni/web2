@@ -30,6 +30,10 @@ function botonera($categorias){
 function form_modificar($datos, $categorias){
     require_once './template/form_modificar.phtml';
 }
+
+function registro_producto(){
+    require_once 'template/registro_producto.phtml';
+}
 }
 
 

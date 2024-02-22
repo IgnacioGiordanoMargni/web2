@@ -14,6 +14,9 @@ class controlador_usuarios {
         $this->view= new vista_usuarios();
     }
 
+    function showLogin(){
+        $this->view->showLogin();
+    }    
     function adduser(){
         $mail= $_POST['Mail'];
         $nombre= $_POST['Nombre'];

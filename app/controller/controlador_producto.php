@@ -130,4 +130,7 @@ function form_modificar($id){
   $this->view->form_modificar($datos, $categorias);
 }
 
+function showRegistroProducto(){
+  $this->view->registro_producto();
+}
 }

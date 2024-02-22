@@ -1,7 +1,6 @@
 # web2
 tp de web 2
-nombres de los integrantes del grupo (emails): 
-    -Matias Morcillo - matiasmorcillo128@gmail.com
+
     -Ignacio Giordano Margni - icasas760@gmail.com
 Temática del TPE: 
     -Mercado de productos fantasticos
