@@ -12,12 +12,19 @@ class modelo_producto extends Model{
       }
 
 
-    function insertarDatos_Productos($producto, $imagen, $precio, $descripcion){
+ function BuscarProductos($Busqueda){
+   $query = $this->db->prepare("SELECT * FROM productos WHERE Producto LIKE '%$Busqueda%'");
+   $query-> execute();
+   $productos=$query->fetchAll(PDO::FETCH_OBJ); 
+   return $productos;
+ }
+
+    function insertarDatos_Productos($producto, $imagen, $precio, $Categoria, $descripcion){
     
         $db= $this->db;
         
-        $query=$this->db->prepare('INSERT INTO productos(Producto, Imagen, Precio, Descripcion) VALUES(?, ?, ?, ?)');
-        $query->execute([$producto, $imagen, $precio, $descripcion]);
+        $query=$this->db->prepare('INSERT INTO productos(Producto, Imagen, Precio, Categoria, Descripcion) VALUES(?, ?, ?, ?, ?)');
+        $query->execute([$producto, $imagen, $precio, $Categoria, $descripcion]);
         
         return $db->lastInsertId();
         }
@@ -56,18 +63,21 @@ class modelo_producto extends Model{
         $categorias = $query->fetchAll(PDO::FETCH_OBJ); 
      return $categorias;
     }
+    function ObtenerCategoriasPorId($id){
+      
+      $query = $this->db->prepare('SELECT * FROM categorias WHERE id=?');
+      $query -> execute([$id]);
+      $categorias = $query->fetch(PDO::FETCH_OBJ); 
+   return $categorias;
+  }
 
 
    
     function ObtenerProductosCategoria($id){
      
-        $query = $this->db->prepare('SELECT * FROM categorias WHERE id=?');
-        $query->execute([$id]);
-        $resultado = $query->fetch(PDO::FETCH_OBJ);
-        $categoria= $resultado->Categorias;
 
         $sentencia = $this->db->prepare('SELECT * FROM productos WHERE Categoria=?');
-        $sentencia->execute([$categoria]);
+        $sentencia->execute([$id]);
         $productos= $sentencia->fetchAll(PDO::FETCH_OBJ);
      return $productos; 
     }
@@ -101,15 +111,9 @@ class modelo_producto extends Model{
         return $db->lastInsertId();
         }
 
-     function modificar_producto($Producto, $imagen, $Precio, $Categoria, $id){
-        $query = $this->db->prepare('UPDATE productos SET Producto= :Nombre , Imagen= :link , Precio= :valor, Categoria= :cat WHERE id=:id');
-        $query->bindParam(':Nombre', $Producto);
-        $query->bindParam(':link', $imagen);
-        $query->bindParam(':valor', $Precio);
-        $query->bindParam(':cat', $categoria);
-
-        $query->bindParam(':id', $id);
-        $query->execute();
+     function modificar_producto($Producto, $imagen, $Precio, $Categoria, $Descripcion, $id){
+        $query = $this->db->prepare('UPDATE productos SET Producto=? , Imagen=? , Precio=?, Categoria=?, Descripcion=? WHERE id= ?');
+        $query->execute([$Producto, $imagen, $Precio, $Categoria, $Descripcion, $id]);
         header('Location: http://localhost/tpo_web2/a%C3%B1adiroquitar_producto');
 
      }

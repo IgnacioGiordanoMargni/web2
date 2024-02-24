@@ -11,6 +11,7 @@
 <h1>Registrar un producto</h1>
 <div class="form-box">
 <form required action="insertar_producto" method="POST" class="my-4">
+<p>Agregar producto</p>
     <label>Producto</label>
     <input name="Producto" type="text">
     <label>Link de la imagen</label>
@@ -21,7 +22,7 @@
         
         <?php foreach($categorias as $categoria){ ?>
  
-         <option value=<?=$categoria->Categorias?>> <?=$categoria->Categorias?> </option>
+         <option value=<?=$categoria->id?>> <?=$categoria->Categorias?> </option>
 
         <?php } ?> 
 
@@ -31,6 +32,7 @@
     <button type="submit">Guardar</button>
 </form>
 <form required action="agregar_categoria" method="POST" class="my-4">
+<p>Agregar Categoria</p>
     <label>Categorias</label>
     <input name="categoria">
     <button type="submit">Guardar</button>

@@ -11,7 +11,7 @@ class vista_productos{
     }
 
 
-    function MostrarProductoDescripcion($producto){
+    function MostrarProductoDescripcion($producto, $categorias){
 
     require_once './template/descripcion_producto.phtml';
 
@@ -31,7 +31,7 @@ function form_modificar($datos, $categorias){
     require_once './template/form_modificar.phtml';
 }
 
-function registro_producto(){
+function registro_producto($categorias){
     require_once 'template/registro_producto.phtml';
 }
 }

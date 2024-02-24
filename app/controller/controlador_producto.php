@@ -12,19 +12,26 @@ function __construct(){
     $this->view= new vista_productos();
 }
 
+function BuscarProductos(){
+  $Busqueda= $_POST["buscador"];
+  $productos= $this->model->BuscarProductos($Busqueda);
+ 
+  $this->view->MostrarProducto($productos);
+}
 
 function AñadirProducto(){
     $Producto= $_POST['Producto'];
     $Imagen= $_POST['Imagen'];
     $Precio= $_POST['Precio'];
     $Descripcion= $_POST['Descripcion'];
+    $Categoria= $_POST['Categoria'];
     $mail= $_SESSION['user_mail'];
 
     //chequeo que los campos tengan contenido
     if(!empty($_POST['Producto'])&&!empty($_POST['Imagen'])&&!empty($_POST['Precio'])){
         
         //paso los datos a la funcion
-        $id=$this->model->insertarDatos_Productos($Producto, $Imagen, $Precio, $Descripcion);
+        $id=$this->model->insertarDatos_Productos($Producto, $Imagen, $Precio, $Categoria, $Descripcion);
         $this->model->insertar_Productos_Nombres($Producto, $mail);
     }
 
@@ -53,9 +60,9 @@ function verificar_permisos_quitar($id){
 
 
 function Mostrar_Producto_Descripcion($id){
-  $Producto= $this->model->obtenerProductoId($id);
- 
-  $this->view->MostrarProductoDescripcion($Producto);
+  $Producto= $this->model->obtenerProductoId($id); 
+  $categorias= $this->model->ObtenerCategoriasPorId($Producto->Categoria);
+  $this->view->MostrarProductoDescripcion($Producto, $categorias);
 }
 
 function Mostrar_Producto_Quitar(){
@@ -84,7 +91,7 @@ function permisos_modificar(){
 
     if($_SESSION['user_permisos']==1){
      $categorias= $this->model->ObtenerCategorias();
-     require_once 'template/registro_producto.phtml';
+     $this->view->registro_producto($categorias);
      $this->Mostrar_Producto_Quitar();
 
       } else if($_SESSION['user_permisos']!=1) {
@@ -121,7 +128,8 @@ $Producto= $_POST['Producto'];
 $Imagen= $_POST['Imagen'];
 $Precio= $_POST['Precio'];
 $Categoria= $_POST['Categoria'];
-$this->model->modificar_producto($Producto, $Imagen, $Precio, $Categoria, $id);
+$Descripcion= $_POST['Descripcion'];
+$this->model->modificar_producto($Producto, $Imagen, $Precio, $Categoria, $Descripcion, $id);
 }
 
 function form_modificar($id){

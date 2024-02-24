@@ -31,6 +31,14 @@ switch ($params[0]){
         $controller_pagina->showFooter();
        
         break;
+
+    case 'Buscar':
+           $controller_producto->MostrarBotonera();
+           $controller_producto->BuscarProductos();
+           $controller_pagina->showFooter();
+           
+               
+         break;
     case 'entrar':
          
       $controller_user->showLogin();

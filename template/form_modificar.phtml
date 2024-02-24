@@ -10,18 +10,22 @@
 <body>
 <h1>Registrar un producto</h1>
 <div class="form-box">
+ 
 <form action="modificar_producto/<?=$datos->id?>" method="POST" class="my-4">
+
     <label>Producto</label>
     <input name="Producto" type="text" placeholder=<?=$datos->Producto?>>
     <label>Link de la imagen</label>
     <input name="Imagen" type="text" placeholder=<?=$datos->Imagen?>>
     <label>Precio</label>
-    <input name="Precio" type="text" placeholder=<?=$datos->Precio?>></input>
-    <select name="Categoria">
+    <input name="Precio" type="number" placeholder=<?=$datos->Precio?>></input>
+    <label>Descripcion</label>
+    <input name="Descripcion" type="text" placeholder=<?=$datos->Descripcion?>></input>
+    <select name="Categoria" type="number">
         
         <?php foreach($categorias as $categoria){ ?>
  
-         <option value=<?=$categoria->Categorias?>> <?=$categoria->Categorias?> </option>
+         <option value="<?=$categoria->id?>"> <?=$categoria->Categorias?> </option>
 
         <?php } ?> 
 
